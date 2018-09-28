@@ -28,8 +28,6 @@ basic.forever(() => {
 
 
 
-
-
 /*
 let noise = 0
 
@@ -132,6 +130,7 @@ basic.forever(() => {
 })
 */
 
+/*
 let far = 0
 
 let volt = 0
@@ -161,4 +160,29 @@ basic.forever(() => {
     serial.writeValue("far", far)
 
     basic.pause(100)
+})
+*/
+
+
+let volt = 0
+
+let adc = 0
+
+basic.showIcon(IconNames.Heart)
+
+serial.redirectToUSB()
+
+Moisture.setPin(AnalogPin.P0)
+
+basic.forever(() => {
+
+    adc = Moisture.getADCValue()
+
+    serial.writeValue("adc", adc)
+
+    volt = Moisture.getVoltValue()
+
+    serial.writeValue("mV", volt)
+
+    basic.pause(500)
 })

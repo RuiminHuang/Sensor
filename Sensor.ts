@@ -58,7 +58,7 @@ namespace Liquid {
 /*
 sound block
 */
-//% weight=60 color=#CC6633 icon="\uf001" block="sound"
+//% weight=70 color=#CC6633 icon="\uf001" block="sound"
 namespace Sound {
     let Apin = AnalogPin.P0;
     let Dpin = DigitalPin.P1;
@@ -140,7 +140,7 @@ namespace Sound {
 /*
 infrared  block
 */
-//% weight=40 color=#FF0000 icon="\uf0eb" block="infrared"
+//% weight=60 color=#FF0000 icon="\uf0eb" block="infrared"
 namespace Infrared {
     let Apin = AnalogPin.P0;
     let Dpin = DigitalPin.P1;
@@ -220,7 +220,7 @@ namespace Infrared {
 /*
 Gas block
 */
-//% weight=20 color=#CCFFFF icon="\uf5d0" block="gas"
+//% weight=50 color=#0099FF icon="\uf069" block="gas"
 namespace Gas {
     let Apin = AnalogPin.P0;
     let Dpin = DigitalPin.P1;
@@ -302,7 +302,7 @@ namespace Gas {
 /*
 flame block
 */
-//% weight=10 color=#FF6633 icon="\uf06d" block="flame"
+//% weight=40 color=#FF6633 icon="\uf06d" block="flame"
 namespace Flame {
     let Apin = AnalogPin.P0;
     let Dpin = DigitalPin.P1;
@@ -372,4 +372,52 @@ namespace Flame {
     }
 }
 
+
+
+
+/*
+moisture block
+*/
+//% weight=30 color=#FF9900 icon="\uf275" block="moisture"
+namespace Moisture {
+    let pin = AnalogPin.P0
+    let volt = 0;
+    let adc = 0;
+
+
+    /**
+     * Set pin at which the Moisture Senor AOUT line is connected;
+     * @param pin_arg pin at which the Moisture Senor AOUT line is connected;
+     */
+    //% blockId=Moisture_setPin
+    //% block="set moisture pin |%pinarg|"
+    //% weight = 85
+    export function setPin(pin_arg: AnalogPin): void {
+        pin = pin_arg;
+    }
+
+
+    /**
+     * Return the adc value from the AnalogPin;
+     */
+    //% blockId=Moisture_getADCValue
+    //% block="get moisture adc value"
+    //% weight = 75
+    export function getADCValue(): number {
+        adc = pins.analogReadPin(pin);
+        return adc;
+    }
+
+    /**
+     * Return the volt value from the AnalogPin;
+     */
+    //% blockId=Moisture_getVoltValue
+    //% block="get moisture volt value"
+    //% weight = 65
+    export function getVoltValue(): number {
+        adc = pins.analogReadPin(pin);
+        volt = adc * 3300 / 1024;
+        return volt;
+    }
+}
 
