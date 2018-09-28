@@ -1,6 +1,6 @@
 {
     "name": "Sensor-Drive-Suit",
-    "version": "0.0.0",
+    "version": "0.0.6",
     "description": "sensor drive suit for micro:bit",
     "license": "MIT",
     "dependencies": {
