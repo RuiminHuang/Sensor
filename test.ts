@@ -65,7 +65,7 @@ basic.forever(() => {
 
 
 
-
+/*
 let close = 0
 
 let volt = 0
@@ -96,4 +96,69 @@ basic.forever(() => {
 
     basic.pause(100)
 })
+*/
 
+
+/*
+let polluted = 0
+
+let volt = 0
+
+let adc = 0
+
+Gas.setApin(AnalogPin.P0)
+
+Gas.setDpin(DigitalPin.P1)
+
+basic.showIcon(IconNames.Heart)
+
+serial.redirectToUSB()
+
+basic.forever(() => {
+
+    adc = Gas.getADCValue()
+
+    serial.writeValue("adc", adc)
+
+    volt = Gas.getVoltValue()
+
+    serial.writeValue("mV", volt)
+
+    polluted = Gas.getPolluted()
+
+    serial.writeValue("polluted", polluted)
+
+    basic.pause(100)
+})
+*/
+
+let far = 0
+
+let volt = 0
+
+let adc = 0
+
+Flame.setApin(AnalogPin.P0)
+
+Flame.setDpin(DigitalPin.P1)
+
+basic.showIcon(IconNames.Heart)
+
+serial.redirectToUSB()
+
+basic.forever(() => {
+
+    adc = Flame.getADCValue()
+
+    serial.writeValue("adc", adc)
+
+    volt = Flame.getVoltValue()
+
+    serial.writeValue("mV", volt)
+
+    far = Flame.getFar()
+
+    serial.writeValue("far", far)
+
+    basic.pause(100)
+})

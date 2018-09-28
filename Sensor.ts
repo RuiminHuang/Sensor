@@ -199,7 +199,7 @@ namespace Infrared {
     }
 
     /**
-     * Return the infrared sensor volt value from the DigitalPin;
+     * Return the infrared sensor level value from the DigitalPin;
      */
     //% blockId=Infrared_getClose
     //% block="get whether infrared near obstacles"
@@ -213,4 +213,163 @@ namespace Infrared {
         }
     }
 }
+
+
+
+
+/*
+Gas block
+*/
+//% weight=20 color=#CCFFFF icon="\uf5d0" block="gas"
+namespace Gas {
+    let Apin = AnalogPin.P0;
+    let Dpin = DigitalPin.P1;
+
+    let polluted = 0;
+    let volt = 0;
+    let adc = 0;
+
+
+    /**
+     * Set the Apin connected to Gas Sensor;
+     * @param a_pin_arg Gas Sensor analog connected pin;
+     */
+    //% blockId=Gas_setApin
+    //% block="gas sensor analog pin connect to |%a_pin_arg|"
+    //% weight = 85
+    export function setApin(a_pin_arg: AnalogPin): void {
+        Apin = a_pin_arg;
+    }
+
+
+    /**
+     * Set the Dpin connected to Gas Sensor;
+     * @param d_pin_arg Gas Sensor digital connected pin;
+     */
+    //% blockId=Gas_setDpin
+    //% block="gas sensor digital pin connect to |%d_pin_arg|"
+    //% weight = 75
+    export function setDpin(d_pin_arg: DigitalPin): void {
+        Dpin = d_pin_arg;
+        pins.setPull(Dpin,PinPullMode.PullUp);
+    }
+
+
+    /**
+     * Return the gas sensor adc value from the AnalogPin;
+     */
+    //% blockId=Gas_getADCValue
+    //% block="get gas adc value"
+    //% weight = 65
+    export function getADCValue(): number {
+        adc = pins.analogReadPin(Apin);
+        return adc;
+    }
+
+    /**
+     * Return the gas sensor volt value from the AnalogPin;
+     */
+    //% blockId=Gas_getVoltValue
+    //% block="get gas volt value"
+    //% weight = 55
+    export function getVoltValue(): number {
+        adc = pins.analogReadPin(Apin);
+        volt = adc * 3300 / 1024;
+        return volt;
+    }
+
+    /**
+     * Return the gas sensor level value from the DigitalPin;
+     */
+    //% blockId=Gas_getPolute
+    //% block="get whether air polluted"
+    //% weight = 45
+    export function getPolluted(): number {
+        polluted = pins.digitalReadPin(Dpin);
+        if (polluted) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+}
+
+
+
+
+
+
+/*
+flame block
+*/
+//% weight=10 color=#FF6633 icon="\uf06d" block="flame"
+namespace Flame {
+    let Apin = AnalogPin.P0;
+    let Dpin = DigitalPin.P1;
+
+    let far = 0;
+    let volt = 0;
+    let adc = 0;
+
+
+    /**
+     * Set the Apin connected to Flame Sensor;
+     * @param a_pin_arg Flame Sensor analog connected pin;
+     */
+    //% blockId=Flame_setApin
+    //% block="flame sensor analog pin connect to |%a_pin_arg|"
+    //% weight = 85
+    export function setApin(a_pin_arg: AnalogPin): void {
+        Apin = a_pin_arg;
+    }
+
+
+    /**
+     * Set the Dpin connected to Flame Sensor;
+     * @param d_pin_arg Flame Sensor digital connected pin;
+     */
+    //% blockId=Flame_setDpin
+    //% block="flame sensor digital pin connect to |%d_pin_arg|"
+    //% weight = 75
+    export function setDpin(d_pin_arg: DigitalPin): void {
+        Dpin = d_pin_arg;
+        pins.setPull(Dpin,PinPullMode.PullUp);
+    }
+
+
+    /**
+     * Return the Flame sensor adc value from the AnalogPin;
+     */
+    //% blockId=Flame_getADCValue
+    //% block="get flame adc value"
+    //% weight = 65
+    export function getADCValue(): number {
+        adc = pins.analogReadPin(Apin);
+        return adc;
+    }
+
+    /**
+     * Return the flame sensor volt value from the AnalogPin;
+     */
+    //% blockId=Flame_getVoltValue
+    //% block="get flame volt value"
+    //% weight = 55
+    export function getVoltValue(): number {
+        adc = pins.analogReadPin(Apin);
+        volt = adc * 3300 / 1024;
+        return volt;
+    }
+
+    /**
+     * Return the flame sensor level value from the DigitalPin;
+     */
+    //% blockId=Flame_getPolute
+    //% block="get whether far from fire"
+    //% weight = 45
+    export function getFar(): number {
+        far = pins.digitalReadPin(Dpin);
+        return far;
+    }
+}
+
 
