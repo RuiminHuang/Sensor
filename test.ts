@@ -164,6 +164,7 @@ basic.forever(() => {
 */
 
 
+/*
 let volt = 0
 
 let adc = 0
@@ -185,4 +186,24 @@ basic.forever(() => {
     serial.writeValue("mV", volt)
 
     basic.pause(500)
+})
+*/
+
+
+let rslt = 0
+
+MCP23017.setAddress(MCP23017.MCP23017_I2C_ADDRESS.ADDR_0x27)
+
+serial.redirectToUSB()
+
+basic.forever(() => {
+
+    MCP23017.writePin(MCP23017.PIN.A, 85)
+
+    rslt = MCP23017.readPin(MCP23017.PIN.B)
+
+    serial.writeValue("rslt", rslt)
+
+    basic.pause(200)
+    
 })
