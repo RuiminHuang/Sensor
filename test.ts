@@ -190,20 +190,55 @@ basic.forever(() => {
 */
 
 
-let rslt = 0
-
-MCP23017.setAddress(MCP23017.MCP23017_I2C_ADDRESS.ADDR_0x27)
+/*
+let value = 0
 
 serial.redirectToUSB()
 
+MCP23017.setAddress(MCP23017.MCP23017_I2C_ADDRESS.ADDR_0x27)
+
+basic.showIcon(IconNames.Heart)
+
 basic.forever(() => {
 
+    // 将A组7-0引脚分别设为01010101，转换为10进制即为85。
     MCP23017.writePin(MCP23017.PIN.A, 85)
 
-    rslt = MCP23017.readPin(MCP23017.PIN.B)
+    // 读取B组7-0引脚，并从高位开始存储，返回一个字节。
+    value = MCP23017.readPin(MCP23017.PIN.B)
 
-    serial.writeValue("rslt", rslt)
-
+    serial.writeValue("rslt", value)
+    
     basic.pause(200)
+
+})
+
+*/
+
+
+let temperature = 0
+
+let humidity = 0
+
+let pressure = 0
+
+BME280.setAddress(BME280.BME280_I2C_ADDRESS.ADDR_0x77);
+
+basic.forever(() => {
+
+    pressure = BME280.pressure()
+
+    temperature = BME280.temperature()
+
+    humidity = BME280.hunidity()
+
+    serial.writeValue("P", pressure)
+
+    serial.writeValue("T", temperature)
+
+    serial.writeValue("H", humidity)
+
+    basic.pause(1000)
     
 })
+
