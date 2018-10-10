@@ -28,6 +28,7 @@ basic.forever(() => {
 
 
 
+
 /*
 let noise = 0
 
@@ -51,11 +52,11 @@ basic.forever(() => {
 
     volt = Sound.getVoltValue()
 
-    serial.writeValue("mV", volt)
+    //serial.writeValue("mV", volt)
 
     noise = Sound.getNoise()
 
-    serial.writeValue("noise", noise)
+    //serial.writeValue("noise", noise)
 
     basic.pause(100)
 })
@@ -216,6 +217,7 @@ basic.forever(() => {
 */
 
 
+/*
 let temperature = 0
 
 let humidity = 0
@@ -230,7 +232,7 @@ basic.forever(() => {
 
     temperature = BME280.temperature()
 
-    humidity = BME280.hunidity()
+    humidity = BME280.humidity()
 
     serial.writeValue("P", pressure)
 
@@ -239,6 +241,34 @@ basic.forever(() => {
     serial.writeValue("H", humidity)
 
     basic.pause(1000)
-    
-})
 
+})
+*/
+
+
+
+/*
+let temperature = 0;
+
+let humidity = 0;
+
+DHT11.setPin(DigitalPin.P0);
+
+serial.redirectToUSB();
+
+//basic.showIcon(IconNames.Heart);
+
+basic.forever(() => {
+
+    temperature = DHT11.getTemperature();
+
+    humidity = DHT11.getHumidity();
+
+    serial.writeValue("T", temperature);
+
+    serial.writeValue("H", humidity);
+
+    basic.pause(500);
+
+})
+*/

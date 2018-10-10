@@ -22,7 +22,7 @@ namespace Liquid {
      * @param pin_arg pin at which the Liquid Level Senor AOUT line is connected;
      */
     //% blockId=Liquid_setPin
-    //% block="set liquid pin |%pinarg|"
+    //% block="set liquid pin|%pinarg|"
     //% weight = 85
     export function setPin(pin_arg: AnalogPin): void {
         pin = pin_arg;
@@ -73,7 +73,7 @@ namespace Sound {
      * @param a_pin_arg Sound Sensor analog connected pin;
      */
     //% blockId=Sound_setApin
-    //% block="sound sensor analog pin connect to |%a_pin_arg|"
+    //% block="sound sensor analog pin connect to|%a_pin_arg|"
     //% weight = 85
     export function setApin(a_pin_arg: AnalogPin): void {
         Apin = a_pin_arg;
@@ -85,7 +85,7 @@ namespace Sound {
      * @param d_pin_arg Sound Sensor digital connected pin;
      */
     //% blockId=Sound_setDpin
-    //% block="sound sensor digital pin connect to |%d_pin_arg|"
+    //% block="sound sensor digital pin connect to|%d_pin_arg|"
     //% weight = 75
     export function setDpin(d_pin_arg: DigitalPin): void {
         Dpin = d_pin_arg;
@@ -155,7 +155,7 @@ namespace Infrared {
      * @param a_pin_arg Infrared Sensor analog connected pin;
      */
     //% blockId=Infrared_setApin
-    //% block="infrared sensor analog pin connect to |%a_pin_arg|"
+    //% block="infrared sensor analog pin connect to|%a_pin_arg|"
     //% weight = 85
     export function setApin(a_pin_arg: AnalogPin): void {
         Apin = a_pin_arg;
@@ -167,7 +167,7 @@ namespace Infrared {
      * @param d_pin_arg Infrared Sensor digital connected pin;
      */
     //% blockId=Infrared_setDpin
-    //% block="infrared sensor digital pin connect to |%d_pin_arg|"
+    //% block="infrared sensor digital pin connect to|%d_pin_arg|"
     //% weight = 75
     export function setDpin(d_pin_arg: DigitalPin): void {
         Dpin = d_pin_arg;
@@ -235,7 +235,7 @@ namespace Gas {
      * @param a_pin_arg Gas Sensor analog connected pin;
      */
     //% blockId=Gas_setApin
-    //% block="gas sensor analog pin connect to |%a_pin_arg|"
+    //% block="gas sensor analog pin connect to|%a_pin_arg|"
     //% weight = 85
     export function setApin(a_pin_arg: AnalogPin): void {
         Apin = a_pin_arg;
@@ -247,7 +247,7 @@ namespace Gas {
      * @param d_pin_arg Gas Sensor digital connected pin;
      */
     //% blockId=Gas_setDpin
-    //% block="gas sensor digital pin connect to |%d_pin_arg|"
+    //% block="gas sensor digital pin connect to|%d_pin_arg|"
     //% weight = 75
     export function setDpin(d_pin_arg: DigitalPin): void {
         Dpin = d_pin_arg;
@@ -317,7 +317,7 @@ namespace Flame {
      * @param a_pin_arg Flame Sensor analog connected pin;
      */
     //% blockId=Flame_setApin
-    //% block="flame sensor analog pin connect to |%a_pin_arg|"
+    //% block="flame sensor analog pin connect to|%a_pin_arg|"
     //% weight = 85
     export function setApin(a_pin_arg: AnalogPin): void {
         Apin = a_pin_arg;
@@ -329,7 +329,7 @@ namespace Flame {
      * @param d_pin_arg Flame Sensor digital connected pin;
      */
     //% blockId=Flame_setDpin
-    //% block="flame sensor digital pin connect to |%d_pin_arg|"
+    //% block="flame sensor digital pin connect to|%d_pin_arg|"
     //% weight = 75
     export function setDpin(d_pin_arg: DigitalPin): void {
         Dpin = d_pin_arg;
@@ -390,7 +390,7 @@ namespace Moisture {
      * @param pin_arg pin at which the Moisture Senor AOUT line is connected;
      */
     //% blockId=Moisture_setPin
-    //% block="set moisture pin |%pinarg|"
+    //% block="set moisture pin|%pin_arg|"
     //% weight = 85
     export function setPin(pin_arg: AnalogPin): void {
         pin = pin_arg;
@@ -537,7 +537,7 @@ namespace MCP23017 {
 	 * @param addr [0-7] choose address; eg: MCP23017.MCP23017_I2C_ADDRESS.ADDR_0x27
 	*/
     //% blockId="MCP23017_setAddress"
-    //% block="set mcp23017 device address %addr"
+    //% block="set mcp23017 device address|%addr|"
     //% weight=85
     export function setAddress(addr: MCP23017_I2C_ADDRESS) {
         MCP23017_ADDRESS = addr
@@ -550,7 +550,7 @@ namespace MCP23017 {
 	 * @param reg [0-21] register of mcp23017; eg: 0, 15, 23
 	*/
     //% blockId=MCP23017_readReg 
-    //% block="read register |%reg| data"
+    //% block="read register|%reg|data"
     //% weight=75
     export function readReg(reg: REGISTER): number {
         let val = i2cRead(MCP23017_ADDRESS, reg);
@@ -564,7 +564,7 @@ namespace MCP23017 {
      * @param value [0-255] the pin value; eg: 128, 0, 255
 	*/
     //% blockId=MCP23017_writePin
-    //% block="set P|%pin| value |%value|"
+    //% block="set P|%pin|value|%value|"
     //% weight=65
     //% value.min=0 value.max=255
     export function writePin(pin: PIN, value: number): void {
@@ -633,7 +633,7 @@ https://github.com/BoschSensortec/BME280_driver
 /**
  * BME280 block
  */
-//% weight=100 color=#CC00CC icon="\uf0c2" block="BME280"
+//% weight=10 color=#CC00CC icon="\uf0c2" block="BME280"
 namespace BME280 {
 
     export enum BME280_I2C_ADDRESS {
@@ -761,11 +761,11 @@ namespace BME280 {
     /**
      * get humidity(%RH)
      */
-    //% blockId="BME280_hunidity" 
+    //% blockId="BME280_humidity" 
     //% block="humidity"
     //% weight=80 
     //% blockGap=8
-    export function hunidity(): number {
+    export function humidity(): number {
         calData();
         return H;
     }
@@ -799,11 +799,182 @@ namespace BME280 {
      * @param addr [6-7] choose address; eg: BME280.BME280_I2C_ADDRESS.ADDR_0x77
      */
     //% blockId="BME280_setAddress" 
-    //% block="set bme280 device address %addr"
+    //% block="set bme280 device address|%addr|"
     //% weight=50 
     //% blockGap=8
     export function setAddress(addr: BME280_I2C_ADDRESS) {
         BME280_I2C_ADDR = addr
     }
+}
+
+
+
+
+
+
+
+
+/*
+dht11 block
+*/
+//% weight=5 color=#CC3333 icon="\uf491" block="dht11"
+namespace DHT11 {
+
+    let pin = DigitalPin.P0;
+
+    let humidity = 0;
+
+    let temperature = 0;
+
+
+    function dht11Rst(): void{
+        pins.digitalWritePin(pin, 0);
+        basic.pause(20);
+
+        pins.setPull(pin, PinPullMode.PullUp);
+
+        pins.digitalWritePin(pin, 1);
+        basic.pause(30);
+    }
+
+    function dht11Check(): number{
+        let retry = 0;
+
+        //waiting in high level, DHT11 Pull down 40~80us to stop wait
+        while ((pins.digitalReadPin(pin)) && (retry < 100)){
+            retry++;
+            basic.pause(1);
+        }
+
+        //error
+        if (retry >= 100){
+            return 1;
+        } else {
+            retry = 0;    
+        }
+
+        //waiting in low level, DHT11 pull up 40~80 us to stop wait
+        while ( (!(pins.digitalReadPin(pin))) && (retry < 100) ) {
+            retry++;
+            basic.pause(1);
+        }
+
+        //error
+        if (retry >= 100) {
+            return 1;
+        }
+
+        //normal
+        return 0;
+    }
+
+
+    function dht11ReadBit(): number{
+        let retry = 0;
+
+        //waiting in high level, DHT11 Pull down 40~80us to stop wait
+        while ((pins.digitalReadPin(pin)) && retry < 100) {
+            retry++;
+            basic.pause(1);
+        }
+
+        retry = 0;
+
+        //waiting in low level, DHT11 pull up 40~80 us to stop wait
+        while ( (!(pins.digitalReadPin(pin))) && (retry < 100) ) {
+            retry++;
+            basic.pause(1);
+        }
+
+        //waiting in 40us
+        basic.pause(40);
+
+        if (pins.digitalReadPin(pin)) {
+            return 1;
+        } else {
+            return 0;
+        }
+
+    }
+
+
+    function dht11ReadByte(): number{
+        let i = 0;
+        let dat = 0;
+
+        for (i = 0; i < 8; i++){
+            dat << 1;
+            dat |= dht11ReadBit();
+        }
+
+        return dat;
+    }
+
+    function dht11ReadData(): void{
+
+        dht11Rst();
+
+        let data0 = 0,data1 = 0, data2 = 0, data3 = 0, data4 = 0;
+
+        //----------------------------------------------------------
+        basic.showNumber(dht11Check())
+        //----------------------------------------------------------
+
+        if (dht11Check() == 0) {
+        
+            data0 = dht11ReadByte();
+            data1 = dht11ReadByte();
+            data2 = dht11ReadByte();
+            data3 = dht11ReadByte();
+            data4 = dht11ReadByte();
+
+            if ((data0 + data1 + data2 + data3) == data4) {
+                humidity = data0;
+                temperature = data2;
+            } else {
+                humidity = 128;
+                temperature = 128;
+            }
+        } else {
+            humidity = 255;
+            temperature = 255;
+        }
+    }
+
+
+    /**
+     * Set pin at which the dht11 single line is connected;
+     * @param pin_arg pin at which the dht11 single line is connected;
+     */
+    //% blockId=Dht11_setPin
+    //% block="set dht11 pin|%pinarg|"
+    //% weight = 65
+    export function setPin(pin_arg: DigitalPin): void {
+        pin=pin_arg;
+    }
+
+
+    /**
+     * get DHT11 temperature(*C)
+     */
+    //% blockId="DHT11_temperature" 
+    //% block="temperature"
+    //% weight=55
+    export function getTemperature(): number {
+        dht11ReadData();
+        return temperature;
+    }
+
+    /**
+     * get DHT11 humidity(%RH)
+     */
+    //% blockId="DHT11_hunidity" 
+    //% block="humidity"
+    //% weight=45 
+    export function getHumidity(): number {
+        dht11ReadData();
+        return humidity;
+    }
+
 }
 

@@ -9,7 +9,8 @@
     },
     "files": [
         "README.md",
-        "Sensor.ts"
+        "Sensor.ts",
+        "_locales/zh/CH-strings.json"
     ],
     "testFiles": [
         "test.ts"
